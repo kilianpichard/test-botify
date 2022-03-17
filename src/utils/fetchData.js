@@ -37,6 +37,7 @@ function useFetchData(){
                     return [item.name,
                         item.estimated_diameter.kilometers.estimated_diameter_min,
                         item.estimated_diameter.kilometers.estimated_diameter_max,
+                        item.planet
                     ]
                 }).sort((a, b) => ((b[1] + b[2]) / 2) - ((a[1] + a[2]) / 2));
 

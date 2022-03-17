@@ -1,16 +1,17 @@
 import './App.css';
 
 import useFetchData from "./utils/fetchData";
-import HomePage from "./views/HomePage";
-import { useState } from "react";
+import React, { useState } from "react";
+import BarChart from "./components/BarChart";
+import googleCharts from "./utils/googleCharts";
 function App() {
 
-
+    const google = googleCharts();
     const data = useFetchData();
 
   return (
       <>
-          <HomePage data={data}/>
+          <BarChart google={google} data={data} />
       </>
   );
 }
