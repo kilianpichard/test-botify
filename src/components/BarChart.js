@@ -4,11 +4,11 @@ function BarChart ({google,data}) {
     const [chart, setChart] = useState(null);
 
     useEffect(() => {
-        if (google && !chart && data && data.length > 0) {
+        if (google && !chart && data) {
 
             let table = google.visualization.arrayToDataTable([
                 ['Name', 'Min estimated diameter (km)', 'Max estimated diameter (km)'],
-                ...data
+                ...data.objects
             ]);
 
             var options = {};

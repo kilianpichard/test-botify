@@ -1,14 +1,15 @@
 import {useEffect, useState} from "react";
 
 function useFetchData(){
-    const [data,setData] = useState([]);
+    const [data,setData] = useState(null);
 
     useEffect(()=>{
+        console.log("Fetching data...");
         fetch("http://www.neowsapp.com/rest/v1/neo/browse?page=0&size=20&api_key=DEMO_KEY")
             .then(response => response.json())
             .then((res) => {
 
-                let returnData = {planets: [], objects: []};
+                let returnData = {planets: ["Choose a planet"], objects: []};
 
                 res.near_earth_objects.forEach(element => {
 
