@@ -4,7 +4,7 @@ function BarChart ({google,data}) {
     const [chart, setChart] = useState(null);
 
     useEffect(() => {
-        if (google && !chart && data) {
+        if (google && !chart && data.length > 0) {
 
             let table = google.visualization.arrayToDataTable([
                 ['Name', 'Min estimated diameter (km)', 'Max estimated diameter (km)'],
@@ -22,6 +22,7 @@ function BarChart ({google,data}) {
 
     return (
         <>
+            {!chart && <h1>Loading Data...</h1>}
             <div id="BarChart" style={{height: '100vh',width: '100vw'}}/>
         </>
     )
