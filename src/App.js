@@ -8,9 +8,10 @@ function App() {
   const data = useFetchData();
 
   console.log(data);
+  
   return (
       <>
-          <BarChart google={google} />
+          <BarChart google={google} data={data} />
       </>
   );
 }
