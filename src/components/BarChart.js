@@ -4,7 +4,9 @@ function BarChart ({google}) {
     const [chart, setChart] = useState(null);
 
     useEffect(() => {
+        console.log(google);
         if (google && !chart) {
+
             const data = new google.visualization.DataTable();
             data.addColumn('string', 'Name');
             data.addColumn('number', 'Number');
@@ -17,12 +19,12 @@ function BarChart ({google}) {
             ]);
 
             var options = {'title':'How I use React'};
-            const newChart = new google.visualization.PieChart(document.getElementById('pizzaChart'));
+            const newChart = new google.visualization.BarChart(document.getElementById('BarChart'));
             newChart.draw(data, options);
 
             setChart(newChart);
         }
-    }, [chart]);
+    }, [chart,google]);
 
     return (
         <>
