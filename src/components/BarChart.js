@@ -5,7 +5,22 @@ function BarChart ({google}) {
 
     useEffect(() => {
         if (google && !chart) {
+            const data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('number', 'Number');
+            data.addRows([
+                ['Components', 3],
+                ['Views', 10],
+                ['Styles', 5],
+                ['Libraries', 2],
+                ['Plugins', 1]
+            ]);
 
+            var options = {'title':'How I use React'};
+            const newChart = new google.visualization.PieChart(document.getElementById('pizzaChart'));
+            newChart.draw(data, options);
+
+            setChart(newChart);
         }
     }, [chart]);
 
