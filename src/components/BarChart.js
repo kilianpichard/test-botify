@@ -1,34 +1,28 @@
 import { useEffect, useState } from "react";
 
-function BarChart ({google}) {
+function BarChart ({google,data}) {
     const [chart, setChart] = useState(null);
 
     useEffect(() => {
-        console.log(google);
-        if (google && !chart) {
+        if (google && !chart && data) {
 
-            const data = new google.visualization.DataTable();
-            data.addColumn('string', 'Name');
-            data.addColumn('number', 'Number');
-            data.addRows([
-                ['Components', 3],
-                ['Views', 10],
-                ['Styles', 5],
-                ['Libraries', 2],
-                ['Plugins', 1]
+            let table = google.visualization.arrayToDataTable([
+                ['Name', 'Min estimated diameter (km)', 'Max estimated diameter (km)'],
+                ...data
             ]);
 
-            var options = {'title':'How I use React'};
-            const newChart = new google.visualization.BarChart(document.getElementById('BarChart'));
-            newChart.draw(data, options);
+            var options = {};
 
-            setChart(newChart);
+            var chart = new google.visualization.BarChart(document.getElementById('BarChart'));
+
+            chart.draw(table, options);
+            setChart(chart);
         }
-    }, [chart,google]);
+    }, [google,data]);
 
     return (
         <>
-            <div id="BarChart"/>
+            <div id="BarChart" style={{height: '100vh',width: '100vw'}}/>
         </>
     )
 }
