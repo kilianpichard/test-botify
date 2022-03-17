@@ -7,10 +7,11 @@ function App() {
   const google = googleCharts();
   const data = useFetchData();
 
+  console.log(data);
 
   return (
       <>
-          <BarChart google={google} data={data} />
+          <BarChart google={google} data={data.objects} />
       </>
   );
 }
