@@ -9,7 +9,7 @@ function useFetchData(){
             .then(response => response.json())
             .then((res) => {
 
-                let returnData = {planets: ["Choose a planet"], objects: []};
+                let returnData = {planets: [""], objects: []};
 
                 res.near_earth_objects.forEach(element => {
 
